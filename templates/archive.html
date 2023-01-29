@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Archive
+{% endblock %}
+
+{% block main %}
+    {% if len_hist > 0 %}
+    <h1 class = "left-align bw-bold">Archive</h1>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-light align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Word</th>
+                <th scope="col" id="#definition">Definition</th>
+                <th scope="col">Time Removed</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for hist in dictionary%}
+                    <th scope = "row">{{hist["word"]}}</th>
+                    <td>{{hist["definition"]}}</td>
+                    <td>{{hist["time"]}}</td>
+                    <td >
+                        <form action="/recover" method="post">
+                            <input name="word" type="hidden" value="{{ hist['word'] }}">
+                            <input name="definition" type="hidden" value="{{ hist['definition'] }}">
+                            <input style="background-color: #00ffff;" type="submit" value="Recover">
+                        </form>
+                    </td>
+                    <td >
+                        <form action="/delete" method="post">
+                            <input name="word" type="hidden" value="{{ hist['word'] }}">
+                            <input name="definition" type="hidden" value="{{ hist['definition'] }}">
+                            <input style="background-color: red;" type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tbody>
+                {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <div class="text-dark bs-1">Empty History</div>
+    {% endif %}
+{% endblock %}

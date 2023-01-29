@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Help Saver
+{% endblock %}
+
+{% block main %}
+    {% if len_sv > 0 %}
+    <h1 class = "left-align bw-bold">Saves </h1>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-light align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Word</th>
+                <th scope="col">Help Result</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                    <th scope = "row">{{row["type"]}}</th>
+                    <td>{{row["word"]}}</td>
+                    <td>{{row["result"]}}</td>
+                    <td >
+                        <form action="/completed" method="post">
+                            <input name="word" type="hidden" value="{{ row['word'] }}">
+                            <input name="type" type="hidden" value="{{ row['type'] }}">
+                            <button class="btn" style = "background-color: #1CF015" type="submit" value="Submit">Completed</button>
+                        </form>
+                    </td>
+                </tbody>
+                {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <div class="text-dark bs-1">Empty Saves</div>
+    {% endif %}
+
+{% endblock %}

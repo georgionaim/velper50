@@ -1,0 +1,30 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{%  block main %}
+    <h1 class = "bw-bold">Welcome !</h1>
+    <br>
+    <form action="/register" method = "post"  onsubmit ="return verifyPassword()">
+        <div class="mb-3">
+            <input autocomplete="off" id = "username" autofocus class="form-control form-control-lg mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <h6 id="message" class="red-color"></h6>
+        <div class="mb-3">
+            <input autocomplete="off" id = "password" autofocus class="form-control form-control-lg mx-auto w-auto" name = "password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-danger" type="submit" value="Submit">Register</button>
+    </form>
+    <script>
+        function verifyPassword() {
+      var pw = document.getElementById("password").value;
+      msg = "**Password length must be atleast 8 characters, contain atleast 1 digit, lower characters and 1 capital letter"
+      if(pw.length < 8 || /[a-z]/.test(pw) == false || /[A-Z]/.test(pw) == false ||  /\d/.test(pw) == false ) {
+         document.getElementById("message").innerHTML = msg;
+         return false;
+          }
+        }
+    </script>
+{% endblock %}

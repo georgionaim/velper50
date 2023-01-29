@@ -1,0 +1,42 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Table
+{% endblock %}
+
+{%  block mainbar %}
+    {% if greet_entry %}
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <input id = "username" type = "hidden" value="{{name}}">
+        <script>
+                swal({
+                    title: "Welcome " + username.value,
+                    text: "You are succefuly register !",
+                    icon: "success"});
+                fetch("/finished_greet", {"method": "POST"})
+        </script>
+    {% endif %}
+
+{% if len_dict > 0 %}
+    <h1 class = "left-align bw-bold">Table</h1>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-light align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Word</th>
+                <th scope="col" id="#definition">Definition</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for dict in dictionary%}
+                    <th scope = "row">{{dict["word"]}}</th>
+                    <td>{{dict["definition"]}}</td>
+                </tbody>
+                {% endfor %}
+        </table>
+    </div>
+{% else %}
+    <div class="text-dark bs-1">Empty Table</div>
+{% endif %}
+{% endblock %}

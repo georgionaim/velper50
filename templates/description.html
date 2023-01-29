@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Own Description
+{% endblock %}
+
+{% block mainbar %}
+  <h3 class = "left-align bw-bold">One of the best method for memorizing is to rewrite the definition with your own word !</h3>
+  <br>
+  <form action="/save", method="post">
+    <div>
+        <select class="form-select mx-auto w-auto" name = "word">
+            <option disabled selected>Word</option>
+            {% for word in words %}
+                    <option value= {{ word["word"] }}> {{word["word"]}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br>
+    <textarea name="result" rows="6" cols="80"></textarea>
+    <input name="type" type="hidden" value="description">
+    <br>
+    <button class="btn btn-danger" type="submit" value="Save">Save</button>
+  </form>
+{% endblock %}

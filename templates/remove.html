@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Remove
+{% endblock %}
+
+{% block mainbar %}
+    <h2 class = "left-align bw-bold">Remove words and definitions from the main table and the helper table</h2>
+    <br>
+    <form action="/remove" method="post">
+        <div class="mb-3">
+                <select class="form-select mx-auto w-auto" name = "word">
+                    <option disabled selected>Word</option>
+                    {% for word in words %}
+                            <option value= {{ word["word"] }}> {{word["word"]}}</option>
+                    {% endfor %}
+                </select>
+        </div>
+        <button class="btn btn-danger" type="submit" value="Remove">Remove</button>
+    </form>
+{% endblock %}

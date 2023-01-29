@@ -1,0 +1,29 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Keywords Results
+{% endblock %}
+
+{%  block mainbar %}
+    {%if keywords != None%}
+        <div>
+            <h1>Keywords Results:</h1>
+        </div>
+        <div id= "table">
+            {% for keyword in keywords%}
+                <h4>==> {{keyword}}</h4>
+            {% endfor %}
+        </div>
+        <form action="/save" method="post">
+            <div class="mb-3">
+                <input name="word" type="hidden" value="{{word}}">
+                <input name="result" type="hidden" value="{{keywords}}">
+                <input name="type" type="hidden" value="keywords">
+            </div>
+            <button class="btn btn-danger btn-lg justify-content-md-end" id = "btn-sv-summarize"type="submit" value="save">Save</button>
+        </form>
+    {% else %}
+    <h4>No results found</h4>
+    {% endif %}
+{% endblock %}
+

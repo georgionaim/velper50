@@ -1,0 +1,21 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Keywords
+{% endblock %}
+
+{%  block mainbar %}
+    <h2 class = "left-align bw-bold">Extract keywords in definitions in a few seconds !</h2>
+    <br>
+    <form action="/keywords" method = "post">
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name = "word">
+                <option disabled selected>Word</option>
+                {% for word in words %}
+                        <option value = {{word["word"]}}> {{word["word"]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+            <button class="btn btn-danger" type="submit" value="Keywords">Keywords</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Search Result
+{% endblock %}
+
+{% block mainbar %}
+    <h3>Results for '{{word}}'</h3>
+    <div class="left-align" >
+        <ul>
+        {% for counter, definition in definitions.items()%}
+        <li><span class="text-danger">{{counter+1}}-</span>{{definition}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <form action="save_def" method="post">
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name = "definition_number">
+                <option disabled selected>Save definition with his number</option>
+                {% for number in definitions.keys() %}
+                        <option value= {{ number+1 }}> {{number+1}} </option>
+                {% endfor %}
+            </select>
+            <input name="word" type="hidden" value="{{word}}">
+        </div>
+
+    <button class="btn btn-danger" type="submit" value="Save">Save</button>
+    </form>
+{% endblock %}

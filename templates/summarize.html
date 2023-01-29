@@ -1,0 +1,25 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Summarize
+{% endblock %}
+
+{%  block mainbar %}
+    <h1 class = "left-align bw-bold">Summarize a definition in a few seconds !</h1>
+    <h3 class = "left-align bw-bold">&#9940 The more lenght of word you give, more the performance will be excellent</h3>
+
+    <br>
+    <form action="/summarize" method = "post">
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name = "word">
+                <option disabled selected>Word</option>
+                {% for word in words %}
+                        <option value= {{ word["word"] }}> {{word["word"]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+            <button class="btn btn-danger" type="submit" value="Summarize">Summarize</button>
+    </form>
+
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Add
+{% endblock %}
+
+{% block mainbar %}
+    <h2 class = "left-align bw-bold">Add words, definitions into table</h2>
+    <h3 class = "left-align bw-bold">&#9940 IF THE WORD IS MULTIPLE WORDS, YOU MUST ADD _ BETWEEN EACH WORD</h3>
+    <form action="/add" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="word" placeholder="Word" type="text">
+        </div>
+        <div class="mb-3">
+            <textarea name="definition" rows="10" cols="100" placeholder = "Definition"></textarea>
+        </div>
+        <button id = "click"class="btn btn-danger" type="submit" value="Submit">Add</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{%  block main %}
+    <h1 class = "bw-bold">Welcome Back !</h1>
+    <br>
+    <form action="/login" method = "post">
+        <div class="mb-3">
+            <input autocomplete="off" id = "username" autofocus class="form-control form-control-lg mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" id = "password" autofocus class="form-control form-control-lg mx-auto w-auto" name = "password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-danger" type="submit" value="Submit">Log in</button>
+    </form>
+{% endblock %}

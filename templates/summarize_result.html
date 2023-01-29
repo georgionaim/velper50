@@ -1,0 +1,24 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Summarize Result
+{% endblock %}
+
+{%  block mainbar %}
+    {% if not same %}
+        <div id= "table" class="text-center">
+            <h4>{{sentence}}</h4>
+        </div>
+        <form action="/save" method="post">
+            <div class="mb-3">
+                <input name="word" type="hidden" value="{{word}}">
+                <input name="result" type="hidden" value="{{sentence}}">
+                <input name="type" type="hidden" value="summarize">
+            </div>
+            <button class="btn btn-danger btn-lg justify-content-md-end" id = "btn-sv-summarize"type="submit" value="save">Save</button>
+        </form>
+    {% else %}
+        <h4>No results found</h4>
+    {% endif %}
+
+{% endblock %}
